@@ -6,7 +6,7 @@ Android application for recording ECG and accelerometer streaming data from the 
 
 - **Package:** `org.circadiaware.open_polar_h10_ecg_logger`
 - **Languages:** Java and Kotlin (Polar BLE SDK 6+ is Kotlin-based; Kotlin is used for BLE and ViewModel, Java for UI/components)
-- **minSdk:** 21 (Android 5.0+)
+- **minSdk:** 24 (Android 7.0+)
 - **targetSdk:** 36 (Android 16)
 - **Architecture:** MVVM (ViewModel + LiveData)
 
@@ -14,13 +14,14 @@ Android application for recording ECG and accelerometer streaming data from the 
 
 ## Language and Code Style
 
+- **Language Requirement:** All Git commit messages, code comments, documentation (README, KDoc, Javadoc), rule/customization files, and CI/CD workflow comments must be written strictly in **English**.
 - Source code may be written in **Java** or **Kotlin** (Kotlin is preferred for Polar BLE SDK 6+ and coroutines/Flow; Java is supported for UI/components).
 - Follow standard naming conventions:
   - Classes: `PascalCase`
   - Methods and variables: `camelCase`
   - Constants: `UPPER_SNAKE_CASE`
   - Packages: `lowercase`
-- Comments on public classes and methods must be in **Javadoc** or **KDoc** format.
+- Comments on public classes and methods must be in **Javadoc** or **KDoc** format (in English).
 - Maximum line length: **120 characters**.
 - Indentation: **4 spaces** (no tabs).
 
@@ -31,7 +32,16 @@ Android application for recording ECG and accelerometer streaming data from the 
 - Follow the **MVVM** pattern: Activity/Fragment → ViewModel → Repository.
 - `ViewModel` must not hold direct references to Android Context unless it is `ApplicationContext`.
 - Keep UI logic in Fragments/Activities; business logic belongs in ViewModels and Repositories.
-- Package structure:
+- Current package structure (expand as the project grows):
+  ```
+  org.circadiaware.open_polar_h10_ecg_logger/
+  ├── ui/           # Fragments, Activities, Adapters
+  │   └── main/     # StatusFragment, Metrics1Fragment, Metrics2Fragment, RealtimeLineChartView
+  ├── util/         # Utility classes (e.g. DemoDataGenerator)
+  ├── PolarViewModel.kt  # BLE logic + ViewModel (Polar SDK, coroutines)
+  └── MainActivity.java  # Single activity host
+  ```
+- Target package structure (as features are added):
   ```
   org.circadiaware.open_polar_h10_ecg_logger/
   ├── ui/           # Fragments, Activities, Adapters
@@ -59,9 +69,9 @@ Android application for recording ECG and accelerometer streaming data from the 
 - **Do NOT build APKs (`assembleDebug` or `assembleRelease`)**:
   - Packaging the APK artifact is not needed during development and task verification.
   - Only compilation (`./gradlew compileDebugSources`) and tests (`./gradlew testDebugUnitTest`) are required.
-- **AGP:** 8.7.0 — do not downgrade.
-- **Gradle:** 8.9+ — do not downgrade.
-- **Repositories:** only `google()` and `mavenCentral()`. `jcenter()` is **forbidden** (deprecated).
+- **AGP:** 8.13.2 — do not downgrade.
+- **Gradle:** 8.14.5+ — do not downgrade.
+- **Repositories:** `google()`, `mavenCentral()`, and `https://jitpack.io` (required for Polar BLE SDK). `jcenter()` is **forbidden** (deprecated).
 - Pin dependency versions explicitly (avoid dynamic versions like `4.+`).
 - Before adding a new dependency, check if a similar library is already declared in `app/build.gradle`.
 - Do not specify `buildToolsVersion` explicitly — AGP 8.x manages this automatically.
@@ -102,9 +112,10 @@ Android application for recording ECG and accelerometer streaming data from the 
 
 ## Prohibited
 
+- ❌ Writing commit messages, comments, documentation, or CI workflow comments in any language other than English.
 - ❌ Assembling/building APKs (`assembleDebug`, `assembleRelease`) during development/verification — only compilation and unit tests are needed.
 - ❌ Using `jcenter()` — use `mavenCentral()` only.
-- ❌ Lowering `minSdk` below 21.
+- ❌ Lowering `minSdk` below 24.
 - ❌ Lowering `compileSdk` / `targetSdk` below 36.
 - ❌ Storing keystores or passwords in the repository.
 - ❌ Performing network or BLE operations on the main (UI) thread.

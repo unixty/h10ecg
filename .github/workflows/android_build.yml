@@ -4,16 +4,16 @@ on:
   push:
     branches: [ "main", "master" ]
     tags:
-      - 'v*'          # Стабильные релизы: v1.0, v2.0.1
-      - 'pre*'        # Pre-релизы: pre-1.0, pre-v1.0
-      - 'beta*'       # Beta-релизы: beta-1.0, beta.1
-      - 'alpha*'      # Alpha-релизы: alpha-1.0
+      - 'v*'          # Stable releases: v1.0, v2.0.1
+      - 'pre*'        # Pre-releases: pre-1.0, pre-v1.0
+      - 'beta*'       # Beta releases: beta-1.0, beta.1
+      - 'alpha*'      # Alpha releases: alpha-1.0
       - 'rc*'         # Release candidates: rc-1.0, rc1
   pull_request:
     branches: [ "main", "master" ]
 
 jobs:
-  # ─── Сборка ───────────────────────────────────────────────────────────────
+  # ─── Build ────────────────────────────────────────────────────────────────
   build:
     name: Build Debug APK
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '21'
           distribution: 'temurin'
@@ -47,7 +47,7 @@ jobs:
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 30
 
-  # ─── Релиз (при любых тегах v*, pre*, beta*, alpha*, rc*) ─────────────────
+  # ─── Release (on tags v*, pre*, beta*, alpha*, rc*) ───────────────────────
   release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
       - name: Prepare APK with version tag
         run: |
           TAG="${{ github.ref_name }}"
-          # Находим скомпилированный APK и переименовываем
+          # Find the compiled APK and rename it
           APK_FILE=$(find apk-dir -name "*.apk" | head -n 1)
           cp "$APK_FILE" "open-polar-h10-ecg-logger-${TAG}.apk"
 
@@ -78,14 +78,14 @@ jobs:
           body: |
             ## Open Polar H10 ECG Logger — ${{ github.ref_name }}
 
-            ${{ !startsWith(github.ref_name, 'v') && '⚠️ **Внимание:** Это тестовая pre-release сборка.' || '' }}
+            ${{ !startsWith(github.ref_name, 'v') && '⚠️ **Notice:** This is a test pre-release build.' || '' }}
 
-            ### Установка
-            1. Скачайте APK-файл ниже
-            2. На Android устройстве разрешите установку из неизвестных источников
-            3. Установите APK
+            ### Installation
+            1. Download the APK file below
+            2. On your Android device, allow installation from unknown sources
+            3. Install the APK
 
-            > ℹ️ Это debug-сборка. Для production используйте signed release APK.
+            > ℹ️ This is a debug build. For production use a signed release APK.
           files: open-polar-h10-ecg-logger-${{ github.ref_name }}.apk
           draft: false
           prerelease: ${{ !startsWith(github.ref_name, 'v') }}
