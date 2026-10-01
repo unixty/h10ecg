@@ -5,50 +5,148 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.TabFragment"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp">
+    android:padding="10dp"
+    android:background="@color/light">
 
+    <!-- Top Mode & Controls Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/textModeBadge"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/mode_demo_badge"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/badge_demo_text"
+            android:background="@color/badge_demo_bg"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:gravity="center_vertical" />
+
+        <Button
+            android:id="@+id/btnToggleDemo"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/btn_toggle_demo"
+            android:textSize="12sp"
+            android:paddingHorizontal="12dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+    </LinearLayout>
+
+    <!-- Graph 4: 3-Axis Accelerometer -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            style="@style/Heading1"
-            android:text="Graph 4" />
+        android:layout_marginBottom="8dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp">
-            <LinearLayout style="@style/CardViewInner">
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:text="@string/metric_graph_4_title"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/textAccValue"
+                        android:text="@string/placeholder_dash"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <org.circadiaware.open_polar_h10_ecg_logger.ui.main.RealtimeLineChartView
+                    android:id="@+id/chartAcc"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
+    <!-- Graph 5: Total Acceleration Magnitude -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            style="@style/Heading1"
-            android:text="Graph 5" />
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp">
-            <LinearLayout style="@style/CardViewInner">
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:text="@string/metric_graph_5_title"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/textMagValue"
+                        android:text="@string/placeholder_dash"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/chart_mag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <org.circadiaware.open_polar_h10_ecg_logger.ui.main.RealtimeLineChartView
+                    android:id="@+id/chartMag"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

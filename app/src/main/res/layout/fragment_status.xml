@@ -53,18 +53,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
-                    android:text="Start"
+                    android:id="@+id/btn_start"
+                    android:text="Scan &amp; Connect"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp" />
                 <Button
-                    android:text="Stop"
+                    android:id="@+id/btn_stop"
+                    android:text="Disconnect"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp" />
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -86,15 +89,17 @@
                     style="@style/RowItem"
                     android:text="ID:" />
                 <TextView
+                    android:id="@+id/device_id_value"
                     style="@style/RowItem"
-                    android:text="0A3CBC22"
+                    android:text="—"
                     android:textStyle="bold" />
                 <TextView
                     style="@style/RowItem"
                     android:text="Battery: " />
                 <TextView
+                    android:id="@+id/device_battery_value"
                     style="@style/RowItem"
-                    android:text="100%"
+                    android:text="—"
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout style="@style/Row">
@@ -102,15 +107,17 @@
                     style="@style/RowItem"
                     android:text="HR:" />
                 <TextView
+                    android:id="@+id/device_hr_value"
                     style="@style/RowItem"
-                    android:text="88 BPM"
+                    android:text="—"
                     android:textStyle="bold" />
                 <TextView
                     style="@style/RowItem"
                     android:text="ECG:" />
                 <TextView
+                    android:id="@+id/device_ecg_value"
                     style="@style/RowItem"
-                    android:text="-117 uV"
+                    android:text="—"
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
@@ -120,8 +127,9 @@
                     style="@style/RowItem"
                     android:text="Status: " />
                 <TextView
+                    android:id="@+id/device_status_value"
                     style="@style/RowItem"
-                    android:text="Connected"
+                    android:text="Disconnected"
                     android:textStyle="bold" />
                 <!-- These are just to make empty cells to align the status correctly -->
                 <TextView style="@style/RowItem" />

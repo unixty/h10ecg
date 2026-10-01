@@ -1,31 +1,35 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
 }
 
 android {
-    compileSdk 36
+    namespace = 'org.circadiaware.open_polar_h10_ecg_logger'
+    compileSdk = 36
 
     defaultConfig {
-        applicationId "org.circadiaware.open_polar_h10_ecg_logger"
-        minSdk 16
-        targetSdk 36
-        versionCode 1
-        versionName "1.0"
+        applicationId = "org.circadiaware.open_polar_h10_ecg_logger"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    namespace 'org.circadiaware.open_polar_h10_ecg_logger'
+    kotlinOptions {
+        jvmTarget = '21'
+    }
 }
 
 dependencies {
@@ -36,6 +40,16 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    // Polar BLE SDK
+    implementation 'com.github.polarofficial:polar-ble-sdk:6.4.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.8'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-rx3:1.8.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.8.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.0.21'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'

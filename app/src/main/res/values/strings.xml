@@ -4,4 +4,45 @@
     <string name="tabs_status">Status</string>
     <string name="tabs_metrics1">Metrics 1</string>
     <string name="tabs_metrics2">Metrics 2</string>
+
+    <!-- Metrics Titles -->
+    <string name="metric_graph_1_title">ECG Waveform</string>
+    <string name="metric_graph_2_title">Heart Rate</string>
+    <string name="metric_graph_3_title">RR Intervals</string>
+    <string name="metric_graph_4_title">3-Axis Accelerometer</string>
+    <string name="metric_graph_5_title">Total Acceleration Magnitude</string>
+
+    <!-- Units and Labels -->
+    <string name="metric_ecg_unit">µV</string>
+    <string name="metric_hr_unit">BPM</string>
+    <string name="metric_rr_unit">ms</string>
+    <string name="metric_acc_unit">mG</string>
+    <string name="metric_mag_unit">mG</string>
+    <string name="placeholder_dash">—</string>
+    <string name="waiting_for_data">Waiting for sensor data…</string>
+
+    <!-- Mode and Status -->
+    <string name="mode_demo_badge">⚡ Demo Mode (Simulated)</string>
+    <string name="mode_live_badge">🟢 Live: Polar H10</string>
+    <string name="mode_disconnected_badge">⚪ Sensor Disconnected</string>
+    <string name="btn_toggle_demo">Simulation</string>
+    <string name="btn_scan_connect">Scan &amp; Connect</string>
+    <string name="btn_disconnect">Disconnect</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_scanning">Scanning…</string>
+    <string name="status_scan_failed">Scan failed</string>
+    <string name="status_invalid_id">Invalid ID</string>
+
+    <!-- Status Fragment Labels -->
+    <string name="label_session_status">Session Status</string>
+    <string name="label_connection">Connection</string>
+    <string name="label_connected_devices">Connected Devices</string>
+    <string name="label_device_id">ID:</string>
+    <string name="label_battery">Battery:</string>
+    <string name="label_hr">HR:</string>
+    <string name="label_ecg">ECG:</string>
+    <string name="label_status">Status:</string>
+    <string name="msg_bluetooth_permissions_required">Bluetooth permissions are required to connect to the Polar H10.</string>
 </resources>

@@ -6,4 +6,25 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light">#F0F2F3</color>
     <color name="subtle">#C0C2C3</color>
+
+    <!-- Chart Palette -->
+    <color name="chart_background">#111622</color>
+    <color name="chart_grid">#1F2839</color>
+    <color name="chart_baseline">#2E3A52</color>
+    <color name="chart_text">#7E8B9F</color>
+    <color name="chart_ecg">#00E676</color>
+    <color name="chart_hr">#FF5252</color>
+    <color name="chart_rr">#AB47BC</color>
+    <color name="chart_acc_x">#FF5252</color>
+    <color name="chart_acc_y">#4CAF50</color>
+    <color name="chart_acc_z">#2196F3</color>
+    <color name="chart_mag">#FF9800</color>
+
+    <!-- Badges -->
+    <color name="badge_demo_bg">#FFF3E0</color>
+    <color name="badge_demo_text">#E65100</color>
+    <color name="badge_live_bg">#E8F5E9</color>
+    <color name="badge_live_text">#2E7D32</color>
+    <color name="badge_gray_bg">#ECEFF1</color>
+    <color name="badge_gray_text">#546E7A</color>
 </resources>
